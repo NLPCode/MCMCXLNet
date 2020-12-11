@@ -1,0 +1,20 @@
+1 Maximum probability: 3	The person home problems and depression	1.9734411471915884e-23	7.469	6
+1 Minimum perplexity: 167	But only about one person has just even left your home , as the economic problems it is , even with a severe depression .	7.096446809161022e-46	3.998	25
+2 Maximum probability: 4	The set of banks assets and capital .	3.228622444885791e-20	4.987	8
+2 Minimum perplexity: 193	The same one has been set up , with banks saying banks will buy out their bank assets in some parts of the capital .	2.141864104933004e-38	3.336	25
+3 Maximum probability: 7	The talking is something analysts are planning .	1.8111621400803062e-20	5.051	8
+3 Minimum perplexity: 182	The man is talking with about 20 other people in Congress to say not to something that some political analysts are planning for .	6.648898042049787e-45	4.069	24
+4 Maximum probability: 24	task force , the last three miles of port .	1.8217601646315207e-24	4.969	10
+4 Minimum perplexity: 190	A new task force , which has a population of about 300 million square miles from the port .	3.4401832651733506e-27	3.047	19
+5 Maximum probability: 2	set up funds periods holidays .	1.410832976425686e-24	7.845	6
+5 Minimum perplexity: 86	Those people were also able to set aside their own tax funds for long periods during the holidays .	1.1668283314208863e-30	3.446	19
+6 Maximum probability: 26	But I 'm backing to promote an album for a sold .	9.644363897952917e-28	4.785	12
+6 Minimum perplexity: 102	But I 'm definitely not backing it to promote the album and you 're just " sold . "	6.398216831410675e-35	3.937	19
+7 Maximum probability: 4	seized movement and the party taken .	1.7598199142137082e-24	6.837	7
+7 Minimum perplexity: 47	" We have recently seized the movement and the party will not have taken a place .	2.957215429628492e-29	3.649	17
+8 Maximum probability: 1	donations help relief affected .	2.4552509095095778e-20	7.526	5
+8 Minimum perplexity: 200	With many people making big donations , this will still help the tax relief package and fewer jobs are affected .	1.7131741408713062e-40	4.162	21
+9 Maximum probability: 16	But given fashion , shows the product .	1.6427208277222136e-21	5.318	8
+9 Minimum perplexity: 61	But not so much , given that the fashion industry shows the product .	7.7256856269426115e-25	3.701	14
+10 Maximum probability: 2	golf and knee problems admitted .	9.692534433345109e-20	6.254	6
+10 Minimum perplexity: 193	Two golf balls , knee and knee problems , were admitted shortly after noon on Tuesday night .	4.79194306038253e-31	3.674	18

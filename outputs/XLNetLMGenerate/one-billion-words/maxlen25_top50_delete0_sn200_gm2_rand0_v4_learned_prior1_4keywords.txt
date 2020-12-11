@@ -1,0 +1,20 @@
+1 Maximum probability: 10	A person with home health problems or depression	7.951405777761874e-23	5.654	8
+1 Minimum perplexity: 174	A person with home health problems or depression may also need to undergo an assessment .	4.807979298088124e-25	3.111	16
+2 Maximum probability: 1	set banks assets and capital	2.1056272186653216e-23	8.702	5
+2 Minimum perplexity: 163	It starts with the foreign exchange rate being set by central banks and away from other assets and capital markets .	1.2526743628322938e-30	2.994	21
+3 Maximum probability: 32	You are talking something about political analysts planning a general election .	2.351945635123137e-24	3.886	12
+3 Minimum perplexity: 72	We are talking something about the political analysts planning a general election campaign .	1.5866702203057415e-26	3.713	14
+4 Maximum probability: 1	The task force miles port	6.159245274583423e-24	8.907	5
+4 Minimum perplexity: 133	The task force oversees about 30,000 miles of highway and port construction projects for the federal government and states .	1.9606050365992715e-28	2.900	20
+5 Maximum probability: 9	for set funds periods and holidays in 2008 .	3.0356762281185815e-25	5.132	9
+5 Minimum perplexity: 121	It went to the European Central Bank in October but only for set funds periods and bank holidays due back in November .	4.497040378816394e-42	3.808	23
+6 Maximum probability: 6	Michael Jackson backing to promote album sold out !	3.308551780700286e-22	4.496	9
+6 Minimum perplexity: 40	Michael Jackson is backing off a concert tour to promote his latest album which he has already sold out .	1.6611503952006926e-24	2.489	20
+7 Maximum probability: 17	They seized the movement and party leaders were taken hostage .	5.8209747993050376e-21	3.584	11
+7 Minimum perplexity: 62	He also seized on the opposition movement and claimed that party leaders were being taken hostage .	1.1367144436990696e-25	3.023	17
+8 Maximum probability: 2	donations help relief affected	5.0314663493482525e-22	9.808	4
+8 Minimum perplexity: 132	The donations will help support disaster relief efforts in the affected areas and to ensure a sustainable economic recovery .	2.1384890608282176e-26	2.687	20
+9 Maximum probability: 1	A given fashion shows product	1.7001542626313067e-24	9.122	5
+9 Minimum perplexity: 196	A given fashion statement shows you want to sell a certain product and that would be a good thing .	5.7536558548453085e-31	3.165	20
+10 Maximum probability: 23	No golf knee problems were admitted .	2.858710161253188e-20	5.000	7
+10 Minimum perplexity: 51	The golf course was closed when the knee problems were admitted .	6.583836372904491e-21	3.319	12

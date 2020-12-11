@@ -1,0 +1,43 @@
+2020-12-11 17:15:04,296 -  INFO: Initialize forward XLNet LM from checkpoint ../checkpoints/forward_xlnet/one-billion-words.
+2020-12-11 17:15:07,557 -  INFO: Initialize backward XLNet LM from checkpoint ../checkpoints/backward_xlnet/one-billion-words.
+2020-12-11 17:15:11,701 -  INFO: Namespace(backward_lm_path='../checkpoints/backward_xlnet/one-billion-words', candidate_num=50, dataset='one-billion-words', delete=0, forward_lm_path='../checkpoints/forward_xlnet/one-billion-words', generate_candidate_method=2, gpu='0', input_file='../inputs/one-billion-words/4keywords.txt', keywords=4, learned_prior=1, log_file='../logs/XLNetLMGenerate/one-billion-words/maxlen25_top50_delete0_sn200_gm2_rand1_4keywords.txt', masked_lm_path='../checkpoints/xlnet_maskedlm/one-billion-words', max_length=25, min_length=4, model_name='XLNetLMGenerate', output_file='../outputs/XLNetLMGenerate/one-billion-words/maxlen25_top50_delete0_sn200_gm2_rand1_4keywords.txt', random=1, repetition_penalty=1.5, sample_number=200, show_log=0, started_sentence_id=1, top_k=50, tried_time=0)
+2020-12-11 17:15:41,934 -  INFO: 1/10:
+   action 0: average running time 12.6 / 85=0.148,acceptance rate 43 / 85=0.506;
+   action 1: average running time 17.6 / 115=0.153,acceptance rate 21 / 115=0.183;
+
+2020-12-11 17:16:10,080 -  INFO: 2/10:
+   action 0: average running time 22.7 / 157=0.144,acceptance rate 63 / 157=0.401;
+   action 1: average running time 35.6 / 243=0.147,acceptance rate 40 / 243=0.165;
+
+2020-12-11 17:16:37,628 -  INFO: 3/10:
+   action 0: average running time 33.9 / 239=0.142,acceptance rate 100 / 239=0.418;
+   action 1: average running time 51.9 / 361=0.144,acceptance rate 54 / 361=0.150;
+
+2020-12-11 17:17:06,035 -  INFO: 4/10:
+   action 0: average running time 45.3 / 319=0.142,acceptance rate 146 / 319=0.458;
+   action 1: average running time 68.9 / 481=0.143,acceptance rate 74 / 481=0.154;
+
+2020-12-11 17:17:32,570 -  INFO: 5/10:
+   action 0: average running time 56.0 / 400=0.140,acceptance rate 186 / 400=0.465;
+   action 1: average running time 84.8 / 600=0.141,acceptance rate 86 / 600=0.143;
+
+2020-12-11 17:18:00,325 -  INFO: 6/10:
+   action 0: average running time 65.6 / 470=0.139,acceptance rate 209 / 470=0.445;
+   action 1: average running time 102.9 / 730=0.141,acceptance rate 104 / 730=0.142;
+
+2020-12-11 17:18:28,622 -  INFO: 7/10:
+   action 0: average running time 76.9 / 551=0.140,acceptance rate 246 / 551=0.446;
+   action 1: average running time 119.8 / 849=0.141,acceptance rate 122 / 849=0.144;
+
+2020-12-11 17:18:57,317 -  INFO: 8/10:
+   action 0: average running time 89.0 / 636=0.140,acceptance rate 277 / 636=0.436;
+   action 1: average running time 136.4 / 964=0.141,acceptance rate 138 / 964=0.143;
+
+2020-12-11 17:19:25,276 -  INFO: 9/10:
+   action 0: average running time 99.1 / 709=0.140,acceptance rate 317 / 709=0.447;
+   action 1: average running time 154.2 / 1091=0.141,acceptance rate 151 / 1091=0.138;
+
+2020-12-11 17:19:55,859 -  INFO: 10/10:
+   action 0: average running time 119.1 / 837=0.142,acceptance rate 366 / 837=0.437;
+   action 1: average running time 164.7 / 1163=0.142,acceptance rate 172 / 1163=0.148;
+

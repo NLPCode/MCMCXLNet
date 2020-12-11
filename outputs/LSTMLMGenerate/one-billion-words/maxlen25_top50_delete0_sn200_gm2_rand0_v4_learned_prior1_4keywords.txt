@@ -1,0 +1,20 @@
+1 Maximum probability: 1	person home problems depression .	1.5845330535587253e-21	7.982	5
+1 Minimum perplexity: 175	The person has also been accused of having returned home with medical problems that may have caused a severe depression .	7.871098042085041e-31	3.151	21
+2 Maximum probability: 2	That set banks assets capital .	1.1603404182131808e-20	6.558	6
+2 Minimum perplexity: 158	Regulators have set up a few major banks for riskier assets , including some of the value of the long-term capital injection .	1.522380319787353e-33	3.149	23
+3 Maximum probability: 3	After talking something to analysts planning .	1.3600307643077012e-21	6.006	7
+3 Minimum perplexity: 200	" If you 're talking about something like this , according to analysts , you 're not planning for it .	3.214464470193761e-28	2.877	21
+4 Maximum probability: 71	The task force is about 100 miles from the port .	2.4689214102627093e-16	2.995	11
+4 Minimum perplexity: 18	The task force is about 100 miles from the port .	2.4689214102627093e-16	2.995	11
+5 Maximum probability: 9	How set funds during periods of summer holidays ?	1.3695613479090189e-24	5.495	9
+5 Minimum perplexity: 177	So how to set up the funds for even longer periods of time for the holidays ?	8.64020654421459e-28	3.462	17
+6 Maximum probability: 1	backing promote album sold .	2.2369013880647482e-23	8.692	5
+6 Minimum perplexity: 194	The backing of Jackson did not promote an album that had been sold for years and was not included in the show .	2.5318267667383357e-35	3.319	23
+7 Maximum probability: 4	The seized movement the party has taken .	9.444771134628377e-21	5.123	8
+7 Minimum perplexity: 76	The most commonly seized movement is that the party has taken over later this year .	1.2178417389721757e-27	3.645	16
+8 Maximum probability: 2	The donations help relief affected .	1.013130189146794e-18	5.919	6
+8 Minimum perplexity: 24	The donations will help to ensure that the relief services are not affected .	2.346659324837873e-23	3.474	14
+9 Maximum probability: 3	And " given fashion shows product ?	5.251166870273989e-24	6.700	7
+9 Minimum perplexity: 67	However , " given that it 's not clear , what about fashion shows " about buying such a product ?	7.000945205489514e-37	3.784	21
+10 Maximum probability: 3	Two golf knee problems were admitted .	3.264847451572531e-21	5.896	7
+10 Minimum perplexity: 148	" Last year , the New England and Wales golf team 's knee problems were admitted .	1.1384294095458212e-31	3.958	17

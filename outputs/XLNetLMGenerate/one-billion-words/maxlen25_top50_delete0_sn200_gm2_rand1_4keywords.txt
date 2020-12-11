@@ -1,0 +1,20 @@
+1 Maximum probability: 5	One person at home problems depression	2.0468160654366114e-23	7.463	6
+1 Minimum perplexity: 197	I have a living person who is not working in a nursing home and therefore suffers from other health problems like depression and anxiety.	3.1838566819293546e-36	3.144	24
+2 Maximum probability: 2	set up banks assets and capital	2.6719456123984477e-23	7.425	6
+2 Minimum perplexity: 195	They were set up jointly by the investment banks assets trust and venture capital funds for investment in riskier businesses .	3.98382160339577e-35	3.300	21
+3 Maximum probability: 15	talking about something else analysts are planning off .	1.7881732268349064e-25	5.180	9
+3 Minimum perplexity: 195	And talking here is something else that even some analysts are already planning to upend .	5.405053968653049e-33	3.910	16
+4 Maximum probability: 3	task force miles from port	1.613634635772889e-22	8.363	5
+4 Minimum perplexity: 190	A Russian Navy task force has also been stationed about five miles north of the Georgian port city and near where the ship sank	2.1586700896135575e-39	3.561	24
+5 Maximum probability: 3	set of funds periods and holidays	2.3946287189272326e-26	8.428	6
+5 Minimum perplexity: 191	Prices are also generally set during low funds and peak periods that occur around the holidays	2.3489007247773374e-36	4.826	16
+6 Maximum probability: 21	backing promote the album sold .	3.7639711027708925e-21	5.879	6
+6 Minimum perplexity: 169	But the backing from six top artists appeared to help promote the new album as it sold out .	2.1558622493387285e-33	3.582	19
+7 Maximum probability: 1	seized movement to party taken	7.210661938458835e-27	10.032	5
+7 Minimum perplexity: 178	Authorities have also seized movement property belonging to opposition party supporters and taken them away from the national police station .	1.1259466053608507e-33	3.299	21
+8 Maximum probability: 8	donations to help the relief affected	5.770635321359397e-20	6.328	6
+8 Minimum perplexity: 117	all of all the donations to help the Haiti earthquake relief effort . affected	3.7188699500410314e-29	4.091	14
+9 Maximum probability: 1	And given fashion shows product	1.706873589091598e-24	9.121	5
+9 Minimum perplexity: 192	That on any given day the fashion trade shows can throw together two product categories ?	2.319334657164947e-33	4.175	16
+10 Maximum probability: 1	golf knee problems admitted	3.4539428878191734e-24	10.805	4
+10 Minimum perplexity: 82	Tiger Woods yesterday said that his golf game has played well despite the recent knee problems but admitted he is struggling .	1.4175767757954344e-31	2.960	22
