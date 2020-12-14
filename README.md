@@ -58,7 +58,7 @@ python lstm_lm.py --gpu 0 --dataset one-billion-words --is_forward 1
 #### Train the backward LSTM-based language model
 ```bash
 cd language_models
-python lstm_lm.py --gpu 0 --dataset one-billion-words --is_forward 1
+python lstm_lm.py --gpu 0 --dataset one-billion-words --is_forward 0
 ```
 
 #### Train the forward XLNet-based language model
