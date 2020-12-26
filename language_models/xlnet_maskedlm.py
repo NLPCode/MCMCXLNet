@@ -45,13 +45,8 @@ class XLNetDataset(Dataset):
             print("num_ignored_sentence",num_ignored_sentence)
         else:
             filename_list = []
-            if dataset == 'one-billion-words':
-                filename = '../data/{}/{}.txt'.format(dataset, mode)
-                filename_list.append(filename)
-            else:
-                for i in range(2):
-                    filename = '../data/{}/sentiment.{}.{}'.format(dataset, mode, i)
-                    filename_list.append(filename)
+            filename = '../data/{}/{}.txt'.format(dataset, mode)
+            filename_list.append(filename)
 
             for filename in filename_list:
                 with codecs.open(filename, 'r', encoding='utf8') as fr:
