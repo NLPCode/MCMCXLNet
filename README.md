@@ -34,21 +34,25 @@ Next, we train forward and backward language models, and use them as the candida
 cd language_models   
 python xlnet_maskedlm.py --convert_data 1
 ```
+### Step 1: fine-tune xlnet on masked lm dataset
+```bash
+sh xlnet_maskedlm.sh
+```
 
-### Step 1: create synthetic data for training the XLNet-based classifier
+### Step 2: create synthetic data for training the XLNet-based classifier
 ```bash
 cd utils  
-python create_synthetic_data.py --generate_mode 2 --batch_size 100
+python create_synthetic_data.py --generate_mode 2 --batch_size 100 --train_dataset_size 1000000 --test_dataset_size 100000
 ```
 
 
-### Step 2: train the XLNet-based classifier
+### Step 3: train the XLNet-based classifier
 ```bash
 cd classifier  
 python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
     --gpu 0,1,2 \
 ```
-### Step 3: train language models
+### Step 4: train language models
 
 #### Train the forward LSTM-based language model
 ```bash
@@ -75,7 +79,7 @@ python -m torch.distributed.launch --nproc_per_node=2 xlnet_lm.py\
     --is_forward 0  \
     --train 1
 ```
-### Step 4: generate sentences with lexical constraints
+### Step 5: generate sentences with lexical constraints
 
 #### Generete with LSTM-based MCMC model (L-MCMC)
 ```bash
