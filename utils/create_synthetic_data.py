@@ -334,14 +334,16 @@ if __name__ == "__main__":
     parser.add_argument('--max_length', type=int, default=40,
                         help='the maximum length of the input sentence.')
     parser.add_argument('--batch_size', type=int, default=1)
-    parser.add_argument('--train_dataset_size', type=int, default=10)
-    parser.add_argument('--test_dataset_size', type=int, default=10)
+    parser.add_argument('--train_dataset_size', type=int, default=10,
+                       help='the number of sentences used to create the synthetic training set.')
+    parser.add_argument('--test_dataset_size', type=int, default=10,
+                       help='the number of sentences used to create the synthetic test set.')
     parser.add_argument('--generate_mode', type=int, default=2, choices=[0,1,2])
     parser.add_argument('--gpu', type=str, default='1')
 
     args = parser.parse_args()
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
-    model_path = '../checkpoints/xlnet_maskedlm/one-billion-words'
+    model_path = f'../checkpoints/xlnet_maskedlm/{args.dataset}'
     args.model_path = model_path
     if args.generate_mode ==0:
         print('construct data with masked lm.')
