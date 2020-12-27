@@ -12,7 +12,7 @@ All our experiments are conducted on One-Billion-Word corpus (http://www.statmt.
 ## Pretrained model checkpoints 
 | Model           |  Download link
 |----------------------|--------|
-| XLNet-based token-level classifier| [\[link\]](https://drive.google.com/file/d/1jce_rjHM4GG4S5AFXx4W7ntPt4XxunKR/view?usp=sharing)  | 
+| XLNet-based token-level classifier| [\[link\]](https://drive.google.com/file/d/1wyNfE_Q7-vn9s2PCWCkN_m7RscAPQrnX/view?usp=sharing)  | 
 | XLNet-based masked language model| [\[link\]](https://drive.google.com/file/d/11C6JabUpg2TQ9bCEXdnoOGUAMdUBaxgn/view?usp=sharing)  | 
 | LSTM-based forward language model| [\[link\]](https://drive.google.com/file/d/1E2iye0yWxTmZwFw30h8Z7XR0A-6GaeYK/view?usp=sharing)  | 
 | LSTM-based backward language model| [\[link\]](https://drive.google.com/file/d/1UPyWL9SveXBUldNITcS80UiXbfyADzkc/view?usp=sharing)  | 
