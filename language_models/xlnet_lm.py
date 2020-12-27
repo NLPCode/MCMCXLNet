@@ -179,7 +179,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--gpu', type=str, default='0')
     parser.add_argument('--local_rank', type=int, default=-1)
-    parser.add_argument('--dataset', type=str, default='one-billion-words', choices=['yelp', 'amazon','one-billion-words'])
+    parser.add_argument('--dataset', type=str, default='one-billion-words')
     args = parser.parse_args()
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
     args.n_gpu = torch.cuda.device_count()
