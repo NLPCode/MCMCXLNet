@@ -262,7 +262,7 @@ if __name__ == "__main__":
     best_acc = Macro_F1
 
     # evaluate_steps = 10000
-    evaluate_steps = len(trainset)/args.batch_size/5/args.n_gpu
+    evaluate_steps = int(len(trainset)/args.batch_size/5/args.n_gpu)
     print_steps = 10
     global_steps = 0
 
