@@ -38,7 +38,7 @@ python xlnet_maskedlm.py --convert_data 1
 ### Step 1: create synthetic data for training the XLNet-based classifier
 ```bash
 cd utils  
-python create_synthetic_data.py --generate_mode 2
+python create_synthetic_data.py --generate_mode 2 --batch_size 100
 ```
 
 
