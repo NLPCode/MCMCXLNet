@@ -254,7 +254,7 @@ if __name__ == "__main__":
     else:
         test_sampler = torch.utils.data.distributed.DistributedSampler(testset)
 
-    testloader = DataLoader(testset, batch_size=args.batch_size, sampler=test_sampler, collate_fn=testset.create_mini_batch)
+    testloader = DataLoader(testset, batch_size=2*args.batch_size, sampler=test_sampler, collate_fn=testset.create_mini_batch)
     log_ppl, used_time = XLNetLM.compute_perplexity(model, testloader)
     if args.local_rank in [-1, 0]:
         logger.logger.info('log-perplexity of the dataset is {:.3f}, uses {:.2f} seconds.'.format(log_ppl, used_time))
@@ -266,8 +266,8 @@ if __name__ == "__main__":
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min',factor=0.1, patience=2, verbose=True, min_lr=1e-6)
     scheduler.step(log_ppl)
     best_log_ppl = log_ppl
-    evaluate_steps = 10000
-    # evaluate_steps = 100
+    #evaluate_steps = 10000
+    evaluate_steps = int(len(trainset)/args.batch_size/5/args.n_gpu)
     print_steps = 10
     global_steps = 0
 
@@ -276,7 +276,8 @@ if __name__ == "__main__":
     local_step = 0
     # fine-tune xlnet on the training dataset
     for epoch in range(args.epochs):
-        train_sampler.set_epoch(epoch)
+        if args.n_gpu>1:
+            train_sampler.set_epoch(epoch)
         for i, data in enumerate(trainloader):
             global_steps +=1
             local_step +=1
