@@ -158,7 +158,7 @@ if __name__ == "__main__":
     parser.add_argument('--test_batch_size', type=int, default=100)
     parser.add_argument('--max_sentence_length', type=int, default=50,
                         help='the max length of sentences for training language models.')
-    parser.add_argument('--epochs', type=int, default=10)
+    parser.add_argument('--epochs', type=int, default=2)
     parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--gpu', type=str, default='1')
     parser.add_argument('--train', type=int, default=1)
