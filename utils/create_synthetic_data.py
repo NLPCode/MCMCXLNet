@@ -321,7 +321,7 @@ def create_synthetic_data(output_file, input_tensors,lengths, model, tokenizer, 
             sub_inputs = []
             sub_lengths = []
             j = 0
-    print(len(incorrect_input_ids_list))
+    print(f"The size of the synthetic data set is {len(incorrect_input_ids_list)}.")
     data_dict = {'incorrect_input_ids_list': incorrect_input_ids_list,
                  'label_ids_list': label_ids_list}
     torch.save(data_dict, output_file)
@@ -331,7 +331,7 @@ def create_synthetic_data(output_file, input_tensors,lengths, model, tokenizer, 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Use key words to generate sentence.")
     parser.add_argument('--dataset', type=str, default='one-billion-words')
-    parser.add_argument('--max_length', type=int, default=40,
+    parser.add_argument('--max_length', type=int, default=50,
                         help='the maximum length of the input sentence.')
     parser.add_argument('--batch_size', type=int, default=1)
     parser.add_argument('--train_dataset_size', type=int, default=10,
@@ -364,8 +364,6 @@ if __name__ == "__main__":
     model.eval()
 
     model.to('cuda')
-
-
 
     for mode in ['test','train']:
         if mode =='train':
@@ -403,7 +401,8 @@ if __name__ == "__main__":
             lengths = data_dict['length']
             # each element is [tokenizer.bos_token_id] + input_ids + [tokenizer.eos_token_id]
             input_tensors = data_dict['input_tensors']
-
+            
+        dataset_size = np.min(len(input_tensors), dataset_size)
         print('Max sentence length is {}'.format(np.max(lengths)))
         max_sentence_length = np.max(lengths)
         print(f'''The size of the dataset is {len(input_tensors)}''')
