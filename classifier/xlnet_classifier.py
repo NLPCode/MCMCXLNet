@@ -169,7 +169,7 @@ if __name__ == "__main__":
     # args.n_gpu = len(args.gpu.split(','))
     args.n_gpu = torch.cuda.device_count()
 
-    model_path = '../checkpoints/xlnet_classifier/one-billion-words_v4'
+    model_path = f'../checkpoints/xlnet_classifier/{args.dataset}'
     log_path = '../logs/xlnet_classifier'
 
     args.model_path = model_path
