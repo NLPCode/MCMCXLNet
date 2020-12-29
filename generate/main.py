@@ -210,7 +210,7 @@ if __name__ == "__main__":
 
     suffix = f'maxlen{args.max_length}_top{args.top_k}_delete{args.delete}_sn{args.sample_number}_gm{args.generate_candidate_method}_rand{args.random}'
     if args.random==0:
-        suffix +=f'_v4_learned_prior{args.learned_prior}'
+        suffix +=f'_learned_prior{args.learned_prior}'
     if args.tried_time > 0:
         suffix += f'_tried_time{args.tried_time}'
 
@@ -238,7 +238,7 @@ if __name__ == "__main__":
     print("device:", device)
 
     if args.random==0:
-        classifier_model_path = '../checkpoints/xlnet_classifier/{}_v4'.format(args.dataset)
+        classifier_model_path = '../checkpoints/xlnet_classifier/{}'.format(args.dataset)
         args.classifier_model_path = classifier_model_path
         classifier_model = XLNetForTokenClassification.from_pretrained(classifier_model_path,num_labels=4)
         classifier_model_tokenizer = XLNetTokenizer.from_pretrained(classifier_model_path)
