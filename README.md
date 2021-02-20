@@ -59,25 +59,25 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
 ```
 * Step 4: train language models
 
-#### Train the forward LSTM-based language model
+    * Train the forward LSTM-based language model
 ```bash
 cd language_models
 python lstm_lm.py --gpu 0 --dataset one-billion-words --is_forward 1
 ```
-#### Train the backward LSTM-based language model
+    * Train the backward LSTM-based language model
 ```bash
 cd language_models
 python lstm_lm.py --gpu 0 --dataset one-billion-words --is_forward 0
 ```
 
-#### Train the forward XLNet-based language model
+    * Train the forward XLNet-based language model
 ```bash
 python -m torch.distributed.launch --nproc_per_node=2 xlnet_lm.py\
     --gpu 0,1 \
     --is_forward 1  \
     --train 1
 ```
-#### Train the backward XLNet-based language model
+    * Train the backward XLNet-based language model
 ```bash
 python -m torch.distributed.launch --nproc_per_node=2 xlnet_lm.py\
     --gpu 0,1 \
