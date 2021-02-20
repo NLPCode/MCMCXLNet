@@ -8,7 +8,7 @@ python 3.6
 pip install torch==1.4.0  
 pip install transformers==3.0.2 
 ## Dataset
-All our experiments are conducted on [One-Billion-Word] corpus (http://www.statmt.org/lm-benchmark/). We only put several sentences in the data/one-billion-words/train.txt and data/one-billion-words/test.txt. If you want to train the model from scratch, you should download the raw data from http://www.statmt.org/lm-benchmark/.
+All our experiments are conducted on [One-Billion-Word](http://www.statmt.org/lm-benchmark/) corpus. We only put several sentences in the data/one-billion-words/train.txt and data/one-billion-words/test.txt. If you want to train the model from scratch, you should download the raw data from http://www.statmt.org/lm-benchmark/.
 
 ## Pretrained model checkpoints 
 | Model           |  Download link
