@@ -5,13 +5,15 @@ This repository contains the implementation of the AAAI 2021 paper: "[**Show Me 
 ##  Abstract
 Lexically constrained sentence generation allows the incorporation of prior knowledge such as lexical constraints into the output. This technique has been applied to machine translation, and dialog response generation. Previous work usually used Markov Chain Monte Carlo (MCMC) sampling to generate lexically constrained sentences, but they randomly determined the position to be edited and the action to be taken, resulting in many invalid refinements. To overcome this challenge, we used a classifier to instruct the MCMC-based models where and how to refine the candidate sentences. First, we developed two methods to create synthetic data on which the pre-trained model is fine-tuned to obtain a reliable classifier. Next, we proposed a two-step approach, “Predict and Revise”, for constrained sentence generation. During the predict step, we leveraged the classifier to compute the learned prior for the candidate sentence. During the revise step, we resorted to MCMC sampling to revise the candidate sentence by conducting a sampled action at a sampled position drawn from the learned prior. We compared our proposed models with many strong baselines on two tasks, generating sentences with lexical constraints and text infilling. Experimental results have demonstrated that our proposed model performs much better than the previous work in terms of sentence fluency and diversity. Our code, pre-trained models and Appendix are available at
 https://github.com/NLPCode/MCMCXLNet.
+****
 ## Requirements
 python 3.6  
 pip install torch==1.4.0  
 pip install transformers==3.0.2 
+****
 ## Dataset
 All our experiments are conducted on [One-Billion-Word](http://www.statmt.org/lm-benchmark/) corpus. We only put several sentences in the data/one-billion-words/train.txt and data/one-billion-words/test.txt. If you want to train the model from scratch, you should download the raw data from http://www.statmt.org/lm-benchmark/.
-
+****
 ## Pretrained model checkpoints 
 | Model           |  Download link
 |----------------------|--------|
@@ -27,7 +29,7 @@ Please download these checkpoints and put them into the 'checkcpoints' directory
 tar -xzvf checkpoint_name.tar.gz # replace 'checkpoint_name' with the corresponding checkpoint name.
 ```
 
-
+****
 ## Steps for using the proposed model:
 We first use [One-Billion-Word](http://www.statmt.org/lm-benchmark/) corpus to create synthetic data, and then fine-tune XLNet (base-cased version) on them to get the token-level classifier. 
 Next, we train forward and backward language models, and use them as the candidate generator. Finally, we refine the candidate sentence with the classifier and MCMC sampling. If you want to use our model to generate sentences with the given keywords with the pre-trained chechpoints, you can directly go to [step 5](#### Step 5: generate sentences with lexical constraints).
@@ -106,6 +108,7 @@ python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 
 cd generate  
 python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
 ```
+****
 ## Citation
 If you want to use this code in your research, you can cite our [paper](link):
 ```bash
