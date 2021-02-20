@@ -39,12 +39,12 @@ Next, we train forward and backward language models, and use them as the candida
 cd language_models   
 python xlnet_maskedlm.py --convert_data 1
 ```
-* [Step 1: fine-tune XLNet on the masked lm dataset]
+* Step 1: fine-tune XLNet on the masked lm dataset
 ```bash
 sh xlnet_maskedlm.sh
 ```
 
-### Step 2: create synthetic data for training the XLNet-based classifier
+* Step 2: create synthetic data for training the XLNet-based classifier
 ```bash
 cd utils  
 python create_synthetic_data.py --generate_mode 2 --batch_size 100 --train_dataset_size 1000000 --test_dataset_size 100000
