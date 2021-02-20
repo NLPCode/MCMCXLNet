@@ -32,7 +32,7 @@ tar -xzvf checkpoint_name.tar.gz # replace 'checkpoint_name' with the correspond
 ****
 ## Steps for using the proposed model:
 We first use [One-Billion-Word](http://www.statmt.org/lm-benchmark/) corpus to create synthetic data, and then fine-tune XLNet (base-cased version) on them to get the token-level classifier. 
-Next, we train forward and backward language models, and use them as the candidate generator. Finally, we refine the candidate sentence with the classifier and MCMC sampling. If you want to use our model to generate sentences with the given keywords with the pre-trained chechpoints, you can directly go to [Step 5](#jump).
+Next, we train forward and backward language models, and use them as the candidate generator. Finally, we refine the candidate sentence with the classifier and MCMC sampling. If you want to use our model to generate sentences with the given keywords with the pre-trained chechpoints, you can directly go to [Step 5](#Step 5).
 
 * Pre-processing: tokenize the raw text with XLNet (based-cased) tokenizer
 ```bash
@@ -57,7 +57,7 @@ cd classifier
 python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
     --gpu 0,1,2 \
 ```
-* Step 4: train language models
+* Step 4: train language models  
     If you want to use L-MCMC or L-MCMC-C to generate lexically constrained sentences, you should train the forward LSTM-based language model and the backward LSTM-based language model.
     * Train the forward LSTM-based language model
     ```bash
@@ -84,7 +84,7 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
         --is_forward 0  \
         --train 1
     ```
-* <span id="jump"> Step 5: generate sentences with lexical constraints </span>
+* <span id="Step 5"> Step 5: generate sentences with lexical constraints </span>
 
     * Generete with LSTM-based MCMC model (L-MCMC)
     ```bash
