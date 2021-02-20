@@ -65,49 +65,49 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
     python lstm_lm.py --gpu 0 --dataset one-billion-words --is_forward 1
     ```
     * Train the backward LSTM-based language model
-```bash
-cd language_models
-python lstm_lm.py --gpu 0 --dataset one-billion-words --is_forward 0
-```
+    ```bash
+    cd language_models
+    python lstm_lm.py --gpu 0 --dataset one-billion-words --is_forward 0
+    ```
 
     * Train the forward XLNet-based language model
-```bash
-python -m torch.distributed.launch --nproc_per_node=2 xlnet_lm.py\
-    --gpu 0,1 \
-    --is_forward 1  \
-    --train 1
-```
+    ```bash
+    python -m torch.distributed.launch --nproc_per_node=2 xlnet_lm.py\
+        --gpu 0,1 \
+        --is_forward 1  \
+        --train 1
+    ```
     * Train the backward XLNet-based language model
-```bash
-python -m torch.distributed.launch --nproc_per_node=2 xlnet_lm.py\
-    --gpu 0,1 \
-    --is_forward 0  \
-    --train 1
-```
+    ```bash
+    python -m torch.distributed.launch --nproc_per_node=2 xlnet_lm.py\
+        --gpu 0,1 \
+        --is_forward 0  \
+        --train 1
+    ```
 * <span id="jump"> Step 5: generate sentences with lexical constraints </span>
 
-#### Generete with LSTM-based MCMC model (L-MCMC)
-```bash
-cd generate  
-python main.py --model_name LSTMLMGenerate --random 1 --gpu 1 --keywords 4 -sn 200
-```
+    * Generete with LSTM-based MCMC model (L-MCMC)
+    ```bash
+    cd generate  
+    python main.py --model_name LSTMLMGenerate --random 1 --gpu 1 --keywords 4 -sn 200
+    ```
 
-#### Generete with LSTM-based MCMC + classifier (L-MCMC-C)
-```bash
-cd generate  
-python main.py --model_name LSTMLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
-```
+    * Generete with LSTM-based MCMC + classifier (L-MCMC-C)
+    ```bash
+    cd generate  
+    python main.py --model_name LSTMLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
+    ```
 
-#### Generete with XLNet-based MCMC model (X-MCMC)
-```bash
-cd generate  
-python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
-```
-#### Generete with XLNet-based MCMC + classifier (X-MCMC-C)
-```bash
-cd generate  
-python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
-```
+    * Generete with XLNet-based MCMC model (X-MCMC)
+    ```bash
+    cd generate  
+    python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
+    ```
+    * Generete with XLNet-based MCMC + classifier (X-MCMC-C)
+    ```bash
+    cd generate  
+    python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
+    ```
 ****
 ## Citation
 If you want to use this code in your research, you can cite our [paper](link):
