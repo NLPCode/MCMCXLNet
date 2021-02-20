@@ -58,7 +58,7 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
     --gpu 0,1,2 \
 ```
 * Step 4: train language models
-
+    If you want to use L-MCMC or L-MCMC-C to generate lexically constrained sentences, you should train the forward LSTM-based language model and the backward LSTM-based language model.
     * Train the forward LSTM-based language model
     ```bash
     cd language_models
@@ -92,7 +92,7 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
     python main.py --model_name LSTMLMGenerate --random 1 --gpu 1 --keywords 4 -sn 200
     ```
 
-    * Generete with LSTM-based MCMC + classifier (L-MCMC-C)
+    * Generete with LSTM-based MCMC w/ classifier (L-MCMC-C)
     ```bash
     cd generate  
     python main.py --model_name LSTMLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
@@ -103,7 +103,7 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
     cd generate  
     python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
     ```
-    * Generete with XLNet-based MCMC + classifier (X-MCMC-C)
+    * Generete with XLNet-based MCMC w/ classifier (X-MCMC-C)
     ```bash
     cd generate  
     python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
