@@ -47,7 +47,8 @@ sh xlnet_maskedlm.sh
 * Step 2: create synthetic data for training the XLNet-based classifier
 ```bash
 cd utils  
-python create_synthetic_data.py --generate_mode 2 --batch_size 100 --train_dataset_size 1000000 --test_dataset_size 100000
+python create_synthetic_data.py --generate_mode 2 --batch_size 100 \  
+    --train_dataset_size 1000000 --test_dataset_size 100000
 ```
 
 
