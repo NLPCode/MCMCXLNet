@@ -68,8 +68,8 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
     ```bash
     cd language_models
     python lstm_lm.py --gpu 0 --dataset one-billion-words --is_forward 0
-    ```
-
+    ```  
+    If you want to use L-MCMC or L-MCMC-C to generate lexically constrained sentences, you should train the forward XLNet-based  language model and the backward XLNet-based language model.
     * Train the forward XLNet-based language model
     ```bash
     python -m torch.distributed.launch --nproc_per_node=2 xlnet_lm.py\
