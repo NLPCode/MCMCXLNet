@@ -34,7 +34,7 @@ tar -xzvf checkpoint_name.tar.gz # replace 'checkpoint_name' with the correspond
 We first use [One-Billion-Word](http://www.statmt.org/lm-benchmark/) corpus to create synthetic data, and then fine-tune XLNet (base-cased version) on them to get the token-level classifier. 
 Next, we train forward and backward language models, and use them as the candidate generator. Finally, we refine the candidate sentence with the classifier and MCMC sampling. If you want to use our model to generate sentences with the given keywords with the pre-trained chechpoints, you can directly go to [Step 5](#Step 5).
 
-* Pre-processing: tokenize the raw text with XLNet (based-cased) tokenizer. 
+* Pre-processing: tokenize the raw text with XLNet (based-cased) tokenizer.   
     Make sure that the directory of the dataset (e.g., "One-Billion-Word") is empty. Then, you should prepare some sentences to construct the training set (one sentence in each line). This file is named as "train.txt". Similarly, you should prepare some sentences to construct the validation set, which is named as "test.txt" in our propgram. Note: the "test.txt" is the validation set mentioned in the paper. You should prepare keywords to constrct the test set mentioned in th e paper. 
 ```bash
 cd language_models   
@@ -86,7 +86,8 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
         --is_forward 0  \
         --train 1
     ```
-* <span id="Step 5"> Step 5: generate sentences with lexical constraints </span>
+* <span id="Step 5"> Step 5: generate sentences with lexical constraints </span>  
+    We 
 
     * <span id="L-MCMC"> Generete with LSTM-based MCMC model (L-MCMC) </span>
     ```bash
