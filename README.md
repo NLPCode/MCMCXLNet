@@ -36,7 +36,7 @@ Next, we train forward and backward language models, and use them as the candida
 
 * Pre-processing: tokenize the raw text with XLNet (based-cased) tokenizer.   
     Make sure that the directory of the dataset (e.g., "dat/one-billion-words") is empty. Then, you should prepare some sentences to construct the training set (one sentence in each line). This file is named as "train.txt". Similarly, you should prepare some sentences to construct the validation set, which is named as "test.txt" in our propgram. You should put 'train.txt' and 'test.txt' in the correspoinding dataset directory (e.g., "dat/one-billion-words"). 
- Note: the "test.txt" is the validation set mentioned in the paper. You should prepare keywords to constrct the test set mentioned in the paper. Please refer to [Step 5](#Step 5) for details. 
+ Note: the "test.txt" is the validation set mentioned in the paper. You should prepare keywords to constrct the test set mentioned in the paper. Please refer to [Step 5](#Step5) for details. 
 ```bash
 cd language_models   
 python xlnet_maskedlm.py --convert_data 1
