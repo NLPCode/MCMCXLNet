@@ -87,7 +87,8 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
         --train 1
     ```
 * <span id="Step 5"> Step 5: generate sentences with lexical constraints </span>  
-    We show some keywords in "inputs/one-billion-words/4keywords.txt". If you want to generate sentences with other keywords, you should prepare keywords and put them in the "inputs/one-billion-words/{k}keywords.txt", where '{k}' denotes the number of keywords. In the following, we generate sentences with 4 keywords. 
+    We show some keywords in "inputs/one-billion-words/4keywords.txt", where each line has 4 keywords. In the following, we'll generate sentences with 4 keywords.
+    If you want to generate sentences with number of keywords, you should prepare keywords and put them in the "inputs/one-billion-words/{k}keywords.txt", where '{k}' denotes the number of keywords in each line. If so, you need to change the hyperparameter "keywords" (e.g., --keywords 1, if you want to generate sentence with one keyword). 
 
     * <span id="L-MCMC"> Generete with LSTM-based MCMC model (L-MCMC) </span>
     ```bash
