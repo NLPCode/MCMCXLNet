@@ -32,7 +32,7 @@ tar -xzvf checkpoint_name.tar.gz # replace 'checkpoint_name' with the correspond
 ****
 ## Steps for using the proposed model:
 We first use [One-Billion-Word](http://www.statmt.org/lm-benchmark/) corpus to create synthetic data, and then fine-tune XLNet (base-cased version) on them to get the token-level classifier. 
-Next, we train forward and backward language models, and use them as the candidate generator. Finally, we refine the candidate sentence with the classifier and MCMC sampling. If you want to use our model to generate sentences with the given keywords with the pre-trained chechpoints, you can directly go to [Step 5](#Step 5).
+Next, we train forward and backward language models, and use them as the candidate generator. Finally, we refine the candidate sentence with the classifier and MCMC sampling. If you want to use our model to generate sentences with the given keywords with the pre-trained chechpoints, you can directly go to [Step5](#Step 5).
 
 * Pre-processing: tokenize the raw text with XLNet (based-cased) tokenizer.   
     Make sure that the directory of the dataset (e.g., "dat/one-billion-words") is empty. Then, you should prepare some sentences to construct the training set (one sentence in each line). This file is named as "train.txt". Similarly, you should prepare some sentences to construct the validation set, which is named as "test.txt" in our propgram. You should put 'train.txt' and 'test.txt' in the correspoinding dataset directory (e.g., "dat/one-billion-words"). 
@@ -87,7 +87,7 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
         --is_forward 0  \
         --train 1
     ```
-* <span id="Step 5"> Step 5: generate sentences with lexical constraints </span>  
+* <span id="Step5"> Step 5: generate sentences with lexical constraints </span>  
     We show some keywords in "inputs/one-billion-words/4keywords.txt", where each line has 4 keywords. In the following, we'll generate sentences with 4 keywords.
     If you want to generate sentences with other number of keywords, you should prepare keywords and put them in the "inputs/one-billion-words/{k}keywords.txt", where '{k}' denotes the number of keywords in each line. If so, you need to change the hyperparameter "keywords" (e.g., --keywords 1, if you want to generate sentence with one keyword). 
 
