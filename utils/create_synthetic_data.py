@@ -402,7 +402,7 @@ if __name__ == "__main__":
             # each element is [tokenizer.bos_token_id] + input_ids + [tokenizer.eos_token_id]
             input_tensors = data_dict['input_tensors']
             
-        dataset_size = np.min(len(input_tensors), dataset_size)
+        dataset_size = np.min([len(input_tensors), dataset_size])
         print('Max sentence length is {}'.format(np.max(lengths)))
         max_sentence_length = np.max(lengths)
         print(f'''The size of the dataset is {len(input_tensors)}''')
