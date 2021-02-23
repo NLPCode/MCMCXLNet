@@ -345,7 +345,7 @@ if __name__ == "__main__":
     scheduler.step(log_ppl)
     best_log_ppl = log_ppl
 
-    evaluate_steps = int(len(trainset)/args.batch_size/5/args.n_gpu)
+    evaluate_steps = int(len(trainset)/args.batch_size/5)
     total_steps = 0
 
     # fine-tune LSTMLanguageModel on the training dataset
