@@ -106,7 +106,7 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
     * <span id="X-MCMC"> Generete with XLNet-based MCMC model (X-MCMC) </span>
     ```bash
     cd generate  
-    python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
+    python main.py --model_name XLNetLMGenerate --random 1 --gpu 1 --keywords 4 -sn 200
     ```
     * <span id="X-MCMC-C"> Generete with XLNet-based MCMC w/ classifier (X-MCMC-C) </span>
     ```bash
