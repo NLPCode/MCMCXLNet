@@ -22,9 +22,9 @@ from utils.log import Logger
 
 class XLNetDataset(Dataset):
     def __init__(self, dataset, mode, tokenizer, max_sentence_length=50):
-        assert mode in ["train", "test", 'dev']
+        assert mode in ["train", "test", 'validation']
         self.mode = mode
-        if self.mode=='test' or self.mode=='dev':
+        if self.mode=='test' or self.mode=='validation':
             self.is_train = False
         else:
             self.is_train = True
@@ -294,9 +294,9 @@ if __name__ == "__main__":
                                  collate_fn=trainset.create_mini_batch)
 
 
-    testset = XLNetDataset(args.dataset, "test", tokenizer=tokenizer,max_sentence_length = args.max_sentence_length)
+    testset = XLNetDataset(args.dataset, "validation", tokenizer=tokenizer,max_sentence_length = args.max_sentence_length)
 
-    logger.logger.info(f'''The size of the testset is {len(testset)}.''')
+    logger.logger.info(f'''The size of the validation set is {len(testset)}.''')
     test_sampler =  torch.utils.data.SequentialSampler(testset)
     testloader = DataLoader(testset, batch_size=args.batch_size*2, sampler=test_sampler, collate_fn=testset.create_mini_batch)
 
@@ -304,7 +304,7 @@ if __name__ == "__main__":
         exit(0)
     average_loss, accuracy, used_time= XLNetMaskedLM.compute_accuracy(model, testloader,train = args.train)
     if args.local_rank in [-1, 0]:
-        logger.logger.info('The average loss of the test dataset is {:.3f}, accuracy is {:.3f}, uses {:.2f} seconds.'.
+        logger.logger.info('The average loss of the validation set is {:.3f}, accuracy is {:.3f}, uses {:.2f} seconds.'.
               format(average_loss, accuracy, used_time))
     if args.train==0:
         exit()
@@ -357,7 +357,7 @@ if __name__ == "__main__":
                 if args.local_rank in [-1, 0]:
                     print()
                     logger.logger.info \
-                        ('\tThe average loss of the test dataset is {:.3f}, best accuracy is {:.3f}, accuracy is {:.3f}, uses {:.2f} seconds.'.
+                        ('\tThe average loss of the validation set is {:.3f}, best accuracy is {:.3f}, accuracy is {:.3f}, uses {:.2f} seconds.'.
                             format(average_loss, best_acc, accuracy, used_time))
                 scheduler.step(accuracy)
                 start = time.time()
