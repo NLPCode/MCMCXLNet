@@ -24,7 +24,7 @@ All our experiments are conducted on [One-Billion-Word](http://www.statmt.org/lm
 | XLNet-based forward language model| [\[link\]](https://drive.google.com/file/d/1X2am3IOwfVJj2hgouRuU-igkN2ZqYbtx/view?usp=sharing)  | 
 | XLNet-based backward language model| [\[link\]](https://drive.google.com/file/d/1Q6ZOl8g-p6Cne_w9hSgk1322fQmyhPi5/view?usp=sharing)  | 
 
-Please download these checkpoints and put them into the 'checkcpoints' directory, and then decompress them with the following command:
+If you want to try our models, you should download these checkpoints, put them into the 'checkcpoints' directory, and decompress them with the following command:
 ```bash
 tar -xzvf checkpoint_name.tar.gz # replace 'checkpoint_name' with the corresponding checkpoint name.
 ```
