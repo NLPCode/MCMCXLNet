@@ -41,6 +41,11 @@ class XLNetDataset(Dataset):
             self.lengths = data_dict['length']
             self.input_tensors = data_dict['input_tensors']
             self.mask_ids = data_dict['mask_ids']
+            for i, e in enumerate(self.lengths):
+                if e == 2:
+                    print(e, i)
+                    print(self.input_tensors[i])
+
             num_ignored_sentence = data_dict['num_ignored_sentence']
             print("num_ignored_sentence",num_ignored_sentence)
         else:
@@ -49,7 +54,7 @@ class XLNetDataset(Dataset):
             filename_list.append(filename)
 
             for filename in filename_list:
-                with codecs.open(filename, 'r', encoding='utf8') as fr:
+                with open(filename, 'r', encoding='utf8') as fr:
                     for line in fr:
                         line = line.strip()
                         self.sentences.append(line)
@@ -62,7 +67,8 @@ class XLNetDataset(Dataset):
                     continue
                 input_ids = tokenizer.encode(sentence, add_special_tokens=False)
                 _length = len(input_ids)
-
+                if _length ==0: # ignore empty line
+                    continue
                 # ignore longer sentence
                 if _length > self.max_sentence_length:
                     num_ignored_sentence+=1
@@ -226,7 +232,7 @@ if __name__ == "__main__":
     parser.add_argument('--batch_size', type=int, default=50)
     parser.add_argument('--max_sentence_length', type=int, default=50,
                         help='the max length of sentences for training language models.')
-    parser.add_argument('--epochs', type=int, default=10)
+    parser.add_argument('--epochs', type=int, default=2)
     parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--gpu', type=str, default='1')
     parser.add_argument('--train', type=int, default=1)
