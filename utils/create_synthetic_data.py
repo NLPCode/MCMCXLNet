@@ -336,8 +336,8 @@ if __name__ == "__main__":
     parser.add_argument('--batch_size', type=int, default=1)
     parser.add_argument('--train_dataset_size', type=int, default=10,
                        help='the number of sentences used to create the synthetic training set.')
-    parser.add_argument('--test_dataset_size', type=int, default=10,
-                       help='the number of sentences used to create the synthetic test set.')
+    parser.add_argument('--validation_dataset_size', type=int, default=10,
+                       help='the number of sentences used to create the synthetic validation set.')
     parser.add_argument('--generate_mode', type=int, default=2, choices=[0,1,2])
     parser.add_argument('--gpu', type=str, default='1')
 
@@ -365,11 +365,11 @@ if __name__ == "__main__":
 
     model.to('cuda')
 
-    for mode in ['test','train']:
+    for mode in ['validation','train']:
         if mode =='train':
             dataset_size = args.train_dataset_size
         else:
-            dataset_size = args.test_dataset_size
+            dataset_size = args.validation_dataset_size
 
         input_file = '../data/{}/{}_xlnet_maskedlm.pt'.format(args.dataset, mode)
         print(f'''Loading data from {input_file}''')
