@@ -58,7 +58,7 @@ cd classifier
 python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
     --gpu 0,1,2 \
 ```
-* Step 4: train language models  
+* Step 4: train language models  (Note: You can train all language models at the same time. )
     If you want to use [L-MCMC](#L-MCMC) or [L-MCMC-C](#L-MCMC-C) to generate lexically constrained sentences, you should train the forward LSTM-based language model and the backward LSTM-based language model.
     * Train the forward LSTM-based language model
     ```bash
