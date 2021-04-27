@@ -175,7 +175,7 @@ if __name__ == "__main__":
                         help='the number of the candidate sentences for the proposal distribution.')
     parser.add_argument('--top_k', type=int, default=50,
                         help='the number of the candidate sentences for the proposal distribution.')
-    parser.add_argument('--repetition_penalty', type=float, default=1.5,
+    parser.add_argument('--repetition_penalty', type=float, default=1.3,
                         help='to alleviate the generation of duplicate tokens.')
 
     parser.add_argument('--output_file', type=str, default='../outputs/')
@@ -257,7 +257,7 @@ if __name__ == "__main__":
         args.forward_lm_path = forward_lm_path
         args.backward_lm_path = backward_lm_path
 
-        forward_lm_tokenizer = Vocab(training_files=['../data/one-billion-words/train.txt'])
+        forward_lm_tokenizer = Vocab(training_files=[f'../data/{args.dataset}/train.txt'])
         forward_lm = LSTMLanguageModel(vocab_size=forward_lm_tokenizer.vocab_size, dropout=0, hidden_size=256,
                                   num_layers=2)
         forward_lm.from_pretrained(forward_lm_path)
