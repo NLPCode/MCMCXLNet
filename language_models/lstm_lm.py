@@ -20,7 +20,7 @@ from utils.log import Logger
 
 class LSTMDataset(Dataset):
     def __init__(self, dataset, mode, tokenizer, max_sentence_length=50, is_forward = True):
-        assert mode in ["train", "test", 'dev']
+        assert mode in ["train", 'validation']
         self.mode = mode
         self.tokenizer = tokenizer
         self.max_sentence_length=max_sentence_length
@@ -39,14 +39,7 @@ class LSTMDataset(Dataset):
             self.input_tensors = data_dict['input_tensors']
             num_ignored_sentence = data_dict['num_ignored_sentence']
         else:
-            filename_list = []
-            if dataset == 'one-billion-words':
-                filename = '../data/{}/{}.txt'.format(dataset, mode)
-                filename_list.append(filename)
-            else:
-                for i in range(2):
-                    filename = '../data/{}/sentiment.{}.{}'.format(dataset, mode, i)
-                    filename_list.append(filename)
+            filename_list = ['../data/{}/{}.txt'.format(dataset, mode)]
 
             for filename in filename_list:
                 with open(filename) as fr:
@@ -250,10 +243,6 @@ def compute_perplexity(model, dataloader):
     return log_ppl,used_time
 
 if __name__ == "__main__":
-    """
-    Step 1: train the LSTMLanguageModel on one-billion-words.
-    Step 2: fine-tune the pre-trained model on yelp or amazon.
-    """
 
     parser = argparse.ArgumentParser(description="Use key words to generate sentence.")
     parser.add_argument('--batch_size', type=int, default=100)
@@ -267,10 +256,10 @@ if __name__ == "__main__":
                         help='the max length of sentences for training language models.')
     parser.add_argument('--checkpoint', type=int, default=0,
                         help='load the model from the given checkpoint, if checkpoint>0, else from the best checkpoint')
-    parser.add_argument('--epochs', type=int, default=10)
+    parser.add_argument('--epochs', type=int, default=4)
     parser.add_argument('--lr', type=float, default=1e-4)
     parser.add_argument('--gpu', type=str, default='6')
-    parser.add_argument('--dataset', type=str, default='one-billion-words', choices=['one-billion-words','yelp', 'amazon'])
+    parser.add_argument('--dataset', type=str, default='one-billion-words')
     args = parser.parse_args()
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
     if args.is_forward:
@@ -288,14 +277,9 @@ if __name__ == "__main__":
     logger = Logger(log_file)
     logger.logger.info(args)
 
-    if args.dataset != 'one-billion-words':
-        training_files = [f'../data/{args.dataset}/sentiment.train.0',
-                          f'../data/{args.dataset}/sentiment.train.1']
-    else:
-        training_files = ['../data/one-billion-words/train.txt']
+    training_files = [f'../data/{args.dataset}/train.txt']
     if not os.path.exists(model_path):
         os.makedirs(model_path)
-
 
     tokenizer = Vocab(training_files=training_files, vocab_size =args.vocab_size)
     model = LSTMLanguageModel(vocab_size=tokenizer.vocab_size, dropout=args.dropout, hidden_size=args.hidden_size,
@@ -321,20 +305,15 @@ if __name__ == "__main__":
     print("device:", device)
     model = model.to(device)
 
-    testset = LSTMDataset(args.dataset, "test", tokenizer, max_sentence_length = args.max_sentence_length,is_forward=args.is_forward)
-    if args.dataset!='one-billion-words':
-        devset = LSTMDataset(args.dataset, "dev", tokenizer, max_sentence_length=args.max_sentence_length,
-                             is_forward=args.is_forward)
-        # concat the devset and the testset
-        testset = devset
+    testset = LSTMDataset(args.dataset, "validation", tokenizer, max_sentence_length = args.max_sentence_length,is_forward=args.is_forward)
     testloader = DataLoader(testset, batch_size=args.batch_size, shuffle=False, collate_fn=LSTMDataset.create_mini_batch)
     if args.train:
         trainset = LSTMDataset(args.dataset, "train", tokenizer, max_sentence_length = args.max_sentence_length,is_forward=args.is_forward)
-        logger.logger.info(f'''The size of trainset is {len(trainset)}, the size of testset is {len(testset)}.''')
+        logger.logger.info(f'''The size of the training set is {len(trainset)}, the size of the validation set is {len(testset)}.''')
         trainloader = DataLoader(trainset, batch_size=args.batch_size, shuffle=True, collate_fn=LSTMDataset.create_mini_batch)
 
     log_ppl, used_time = compute_perplexity(model, testloader)
-    logger.logger.info('log-perplexity of the dataset is {:.3f}, uses {:.2f} seconds.'.format(log_ppl, used_time))
+    logger.logger.info('log-perplexity of the validation set is {:.3f}, uses {:.2f} seconds.'.format(log_ppl, used_time))
 
     if args.train==0:
         exit()
@@ -370,7 +349,7 @@ if __name__ == "__main__":
             total_loss += loss.item()
             print("\rEpoch {}/{} is in progress {}/{}, average loss is {:.3f}.".
                   format(epoch+1, args.epochs,i+1,len(trainloader),total_loss/(i+1)),end='')
-            if total_steps % evaluate_steps == 0 and args.dataset == 'one-billion-words':
+            if total_steps % evaluate_steps == 0:
                 log_ppl, used_time = compute_perplexity(model, testloader)
                 if log_ppl < best_log_ppl:
                     best_log_ppl = log_ppl
@@ -379,7 +358,7 @@ if __name__ == "__main__":
                     print('Model weights saved in {}'.format(model_file))
                     model.save_pretrained(model_file)
                 scheduler.step(log_ppl)
-                logger.logger.info('The log-perplexity of the test dataset is {:.3f}, best log_ppl is {:.3f}, uses {:.2f} seconds.'.
+                logger.logger.info('The log-perplexity of the validation set is {:.3f}, best log_ppl is {:.3f}, uses {:.2f} seconds.'.
                     format(log_ppl, best_log_ppl, used_time))
 
         print()
