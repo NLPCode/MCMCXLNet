@@ -334,10 +334,12 @@ if __name__ == "__main__":
     parser.add_argument('--max_length', type=int, default=50,
                         help='the maximum length of the input sentence.')
     parser.add_argument('--batch_size', type=int, default=1)
-    parser.add_argument('--train_dataset_size', type=int, default=10,
-                       help='the number of sentences used to create the synthetic training set.')
-    parser.add_argument('--validation_dataset_size', type=int, default=10,
-                       help='the number of sentences used to create the synthetic validation set.')
+    parser.add_argument('--train_dataset_size', type=int, default=-1,
+                       help='the number of sentences used to create the synthetic training set.'
+                            '-1 means using all available sentences.')
+    parser.add_argument('--validation_dataset_size', type=int, default=-1,
+                       help='the number of sentences used to create the synthetic validation set. '
+                            '-1 means using all available sentences.')
     parser.add_argument('--generate_mode', type=int, default=2, choices=[0,1,2])
     parser.add_argument('--gpu', type=str, default='1')
 
@@ -402,7 +404,11 @@ if __name__ == "__main__":
             # each element is [tokenizer.bos_token_id] + input_ids + [tokenizer.eos_token_id]
             input_tensors = data_dict['input_tensors']
             
-        dataset_size = np.min([len(input_tensors), dataset_size])
+        if dataset_size ==-1:
+            dataset_size = len(input_tensors)
+        else:
+            dataset_size = np.min([len(input_tensors), dataset_size])
+        print(f'Use {dataset_size} to create synthetic data.')
         print('Max sentence length is {}'.format(np.max(lengths)))
         max_sentence_length = np.max(lengths)
         print(f'''The size of the dataset is {len(input_tensors)}''')
