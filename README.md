@@ -35,8 +35,7 @@ We first use [One-Billion-Word](http://www.statmt.org/lm-benchmark/) corpus to c
 Next, we train forward and backward language models, and use them as the candidate generator. Finally, we refine the candidate sentence with the classifier and MCMC sampling. If you want to use our model to generate sentences with the given keywords with the pre-trained chechpoints, you can directly go to [Step 5](#Step5).
 
 * Pre-processing: tokenize the raw text with XLNet (based-cased) tokenizer.   
-    Make sure that the directory of the dataset (e.g., "dat/one-billion-words") is empty. Then, you should prepare some sentences to construct the training set (one sentence in each line). This file is named as "train.txt". Similarly, you should prepare some sentences to construct the validation set, which is named as "test.txt" in our propgram. You should put 'train.txt' and 'test.txt' in the correspoinding dataset directory (e.g., "data/one-billion-words"). 
- Note: "test.txt" is the validation set mentioned in the paper. You should prepare keywords to constrct the test set mentioned in the paper. Please refer to [Step 5](#Step5) for details. 
+    Make sure that the directory of the dataset (e.g., "dat/one-billion-words") is empty. Then, you should prepare some sentences to construct the training set (one sentence in each line). This file is named as "train.txt". Similarly, you should prepare some sentences to construct the validation set, which is named as "validation.txt" in our propgram. You should put 'train.txt' and 'validation.txt' in the correspoinding dataset directory (e.g., "data/one-billion-words"). You should prepare keywords to constrct the test set mentioned in the paper. Please refer to [Step 5](#Step5) for details. 
 ```bash
 cd language_models   
 python xlnet_maskedlm.py --convert_data 1
@@ -50,7 +49,7 @@ sh xlnet_maskedlm.sh
 ```bash
 cd utils  
 python create_synthetic_data.py --generate_mode 2 --batch_size 100 \  
-    --train_dataset_size 1000000 --test_dataset_size 100000
+    --train_dataset_size 1000000 --validation_dataset_size 100000
 ```
 
 
