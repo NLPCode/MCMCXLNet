@@ -28,9 +28,9 @@ If you want to try our models, you should download these checkpoints, put them i
 ```bash
 tar -xzvf checkpoint_name.tar.gz # replace 'checkpoint_name' with the corresponding checkpoint name.
 ```
-
+If you want to train a model on another dataset, please refer to the following steps.
 ****
-## Steps for using the proposed model:
+## Steps for using the proposed model: 
 We first use [One-Billion-Word](http://www.statmt.org/lm-benchmark/) corpus to create synthetic data, and then fine-tune XLNet (base-cased version) on them to get the token-level classifier. 
 Next, we train forward and backward language models, and use them as the candidate generator. Finally, we refine the candidate sentence with the classifier and MCMC sampling. If you want to use our model to generate sentences with the given keywords with the pre-trained chechpoints, you can directly go to [Step 5](#Step5).
 
