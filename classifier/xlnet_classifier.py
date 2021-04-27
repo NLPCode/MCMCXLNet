@@ -21,9 +21,9 @@ from utils.log import Logger
 
 class XLNetDataset(Dataset):
     def __init__(self, dataset, mode, tokenizer=None, max_sentence_length=50):
-        assert mode in ["train", "test", 'dev']
+        assert mode in ["train", "test", 'validation']
         self.mode = mode
-        if self.mode=='test' or self.mode=='dev':
+        if self.mode=='test' or self.mode=='validation':
             self.is_train = False
         else:
             self.is_train = True
@@ -228,10 +228,10 @@ if __name__ == "__main__":
         trainloader = DataLoader(trainset, num_workers=0, batch_size=args.batch_size, sampler=train_sampler,
                                  collate_fn=trainset.create_mini_batch)
 
-    testset = XLNetDataset(args.dataset, "test", tokenizer=tokenizer,max_sentence_length = args.max_sentence_length)
+    testset = XLNetDataset(args.dataset, "validation", tokenizer=tokenizer,max_sentence_length = args.max_sentence_length)
 
 
-    logger.logger.info(f'''The size of the testset is {len(testset)}.''')
+    logger.logger.info(f'''The size of the validation set is {len(testset)}.''')
     # assert len(testset)%(args.test_batch_size*args.n_gpu) ==0
     if args.local_rank == -1 or args.n_gpu <= 1:
         test_sampler =  torch.utils.data.SequentialSampler(testset)
@@ -248,7 +248,7 @@ if __name__ == "__main__":
     Macro_F1 = np.mean(list(f1s.values()))
     if args.local_rank in [-1, 0]:
         print()
-        logs = f'''    The average loss of the test dataset is {average_loss:.3f}, uses {used_time:.1f} seconds.\n'''
+        logs = f'''    The average loss of the validation set is {average_loss:.3f}, uses {used_time:.1f} seconds.\n'''
         for i in range(len(f1s)):
             logs += f'''    Label_{i}: Precision={precisions[i]:.3f},  Recall={recalls[i]:.3f}, F1:{f1s[i]:.3f};\n'''
         logs += f'''    Macro_P={Macro_P:.3f},  Macro_R={Macro_R:.3f}, Macro_F1={Macro_F1:.3f}.'''
@@ -297,7 +297,7 @@ if __name__ == "__main__":
                 Macro_F1 = np.mean(list(f1s.values()))
                 if args.local_rank in [-1, 0]:
                     print()
-                    logs = f'''    The average loss of the test dataset is {average_loss:.3f}, uses {used_time:.1f} seconds.\n'''
+                    logs = f'''    The average loss of the validation set is {average_loss:.3f}, uses {used_time:.1f} seconds.\n'''
                     for i in range(len(f1s)):
                         logs += f'''    Label_{i}: Precision={precisions[i]:.3f},  Recall={recalls[i]:.3f}, F1:{f1s[i]:.3f};\n'''
                     logs += f'''    Macro_P={Macro_P:.3f},  Macro_R={Macro_R:.3f}, Macro_F1={Macro_F1:.3f}.'''
