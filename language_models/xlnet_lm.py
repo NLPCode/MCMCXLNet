@@ -21,7 +21,7 @@ from utils.log import Logger
 
 class XLNetDataset(Dataset):
     def __init__(self, dataset, mode, tokenizer, max_sentence_length=50, is_forward = True):
-        assert mode in ["train", "test", 'dev']
+        assert mode in ["train", 'validation']
         self.mode = mode
         self.tokenizer = tokenizer
         self.max_sentence_length = max_sentence_length
@@ -175,7 +175,7 @@ if __name__ == "__main__":
     parser.add_argument('--is_forward', type=int, default=1)
     parser.add_argument('--max_sentence_length', type=int, default=50,
                         help='the max length of sentences for training language models.')
-    parser.add_argument('--epochs', type=int, default=10)
+    parser.add_argument('--epochs', type=int, default=4)
     parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--gpu', type=str, default='0')
     parser.add_argument('--local_rank', type=int, default=-1)
@@ -242,13 +242,10 @@ if __name__ == "__main__":
             # test_sampler = torch.utils.data.distributed.DistributedSampler(testset)
         trainloader = DataLoader(trainset, batch_size=args.batch_size, sampler=train_sampler, collate_fn=trainset.create_mini_batch)
 
-    testset = XLNetDataset(args.dataset, "test", tokenizer=tokenizer,max_sentence_length = args.max_sentence_length, is_forward=args.is_forward)
-    logger.logger.info(f'''The size of testset is {len(testset)}.''')
+    testset = XLNetDataset(args.dataset, "validation", tokenizer=tokenizer,max_sentence_length = args.max_sentence_length, is_forward=args.is_forward)
+    logger.logger.info(f'''The size of the train set is {len(trainset)}.''')
+    logger.logger.info(f'''The size of the validation set is {len(testset)}.''')
 
-    # if args.dataset!='one-billion-words':
-    #     devset = XLNetDataset(args.dataset, "dev", tokenizer=tokenizer,max_sentence_length = args.max_sentence_length, is_forward=args.is_forward)
-    #     # concat the devset and the testset
-    #     testset = ConcatDataset([devset, testset])
     if args.local_rank == -1 or args.n_gpu <= 1:
         test_sampler =  torch.utils.data.SequentialSampler(testset)
     else:
@@ -257,7 +254,7 @@ if __name__ == "__main__":
     testloader = DataLoader(testset, batch_size=2*args.batch_size, sampler=test_sampler, collate_fn=testset.create_mini_batch)
     log_ppl, used_time = XLNetLM.compute_perplexity(model, testloader)
     if args.local_rank in [-1, 0]:
-        logger.logger.info('log-perplexity of the dataset is {:.3f}, uses {:.2f} seconds.'.format(log_ppl, used_time))
+        logger.logger.info('log-perplexity of the validation set is {:.3f}, uses {:.2f} seconds.'.format(log_ppl, used_time))
 
 
     if args.train==0:
@@ -305,7 +302,7 @@ if __name__ == "__main__":
                 if args.local_rank in [-1, 0]:
                     print()
                     logger.logger.info(
-                        '\tThe log-perplexity of the test dataset is {:.3f}, best log_ppl is {:.3f}, uses {:.2f} seconds.'.
+                        '\tThe log-perplexity of the validation set is {:.3f}, best log_ppl is {:.3f}, uses {:.2f} seconds.'.
                             format(log_ppl, best_log_ppl, used_time))
                 if log_ppl < best_log_ppl:
                     best_log_ppl = log_ppl
