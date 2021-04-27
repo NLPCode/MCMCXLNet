@@ -39,6 +39,7 @@ Next, we train forward and backward language models, and use them as the candida
 cd language_models   
 python xlnet_maskedlm.py --convert_data 1
 ```
+Note: You must conduct Step 1-3 sequentially. At the same time, you can conduct Step 4.
 * Step 1: fine-tune XLNet on the masked lm dataset
 ```bash
 sh xlnet_maskedlm.sh
