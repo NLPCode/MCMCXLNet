@@ -196,12 +196,12 @@ if __name__ == "__main__":
 
     parser.add_argument('--gpu', type=str, default='7')
     parser.add_argument('--show_log', type=int, default=0)
-    parser.add_argument('--dataset', type=str, default='one-billion-words')
+    # parser.add_argument('--dataset', type=str, default='one-billion-words')
+    parser.add_argument('--dataset', type=str, default='oxford')
     args = parser.parse_args()
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 
     args.min_length += args.keywords
-    args.min_length = args.keywords
 
 
     log_path = '../logs/{}/{}'.format(args.model_name, args.dataset)
@@ -214,7 +214,7 @@ if __name__ == "__main__":
     if args.tried_time > 0:
         suffix += f'_tried_time{args.tried_time}'
 
-    # suffix  +=f'_rp{args.repetition_penalty}'
+    suffix  +=f'_repetition_penalty_{args.repetition_penalty}'
     suffix += f'_{args.keywords}keywords.txt'
 
     args.log_file = os.path.join(log_path,suffix)
