@@ -116,11 +116,15 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
 ## Citation
 If you want to use this code in your research, you can cite our [paper](https://ojs.aaai.org/index.php/AAAI/article/view/17536):
 ```bash
+
 @inproceedings{he2021xlentmcmc,
-  title={Show Me How To Revise: Improving Lexically Constrained Sentence Generation with XLNet},
+  title={Show Me How To Revise: Improving Lexically Constrained Sentence Generation with {XLNet}},
   author={He, Xingwei and Li, Victor O.K.},
   booktitle={Proceedings of AAAI},
-  year={2021}
+  pages={12989--12997},
+  year={2021},
+  url = "https://ojs.aaai.org/index.php/AAAI/article/view/17536"
 }
+
 ```
 
