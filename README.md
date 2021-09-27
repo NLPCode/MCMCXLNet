@@ -14,7 +14,7 @@ pip install transformers==3.0.2
 ## Dataset
 All our experiments are conducted on [One-Billion-Word](http://www.statmt.org/lm-benchmark/) corpus. We only put several sentences in the data/one-billion-words/train.txt and data/one-billion-words/test.txt. If you want to train the model from scratch, you should download the raw data from http://www.statmt.org/lm-benchmark/.
 ****
-## Pretrained model checkpoints 
+## Try our model with well-trained model checkpoints
 | Model           |  Download link
 |----------------------|--------|
 | XLNet-based token-level classifier| [\[link\]](https://drive.google.com/file/d/1wyNfE_Q7-vn9s2PCWCkN_m7RscAPQrnX/view?usp=sharing)  | 
@@ -25,12 +25,14 @@ All our experiments are conducted on [One-Billion-Word](http://www.statmt.org/lm
 | XLNet-based backward language model| [\[link\]](https://drive.google.com/file/d/1Q6ZOl8g-p6Cne_w9hSgk1322fQmyhPi5/view?usp=sharing)  | 
 
 If you want to try our models, you should download these checkpoints, put them into the 'checkcpoints' directory, and decompress them with the following command:
+Then you can directly go to [Generate sentences with lexical constraints](#generate). 
 ```bash
 tar -xzvf checkpoint_name.tar.gz # replace 'checkpoint_name' with the corresponding checkpoint name.
 ```
 If you want to train a model on another dataset, please refer to the following steps.
+
 ****
-## Steps for using the proposed model: 
+## Train our model from scratch 
 We first use [One-Billion-Word](http://www.statmt.org/lm-benchmark/) corpus to create synthetic data, and then fine-tune XLNet (base-cased version) on them to get the token-level classifier. 
 Next, we train forward and backward language models, and use them as the candidate generator. Finally, we refine the candidate sentence with the classifier and MCMC sampling. If you want to use our model to generate sentences with the given keywords with the pre-trained chechpoints, you can directly go to [Step 5](#Step5).
 
@@ -86,32 +88,32 @@ python -m torch.distributed.launch --nproc_per_node=3 xlnet_classifier.py\
         --is_forward 0  \
         --train 1
     ```
-* <span id="Step5"> Step 5: generate sentences with lexical constraints </span>  
-    We show some keywords in "inputs/one-billion-words/4keywords.txt", where each line has 4 keywords. In the following, we'll generate sentences with 4 keywords.
-    If you want to generate sentences with other number of keywords, you should prepare keywords and put them in the "inputs/one-billion-words/{k}keywords.txt", where '{k}' denotes the number of keywords in each line. If so, you need to change the hyperparameter "keywords" (e.g., --keywords 1, if you want to generate sentence with one keyword). 
+## <span id="generate"> Generate sentences with lexical constraints </span>
+We show some keywords in "inputs/one-billion-words/4keywords.txt", where each line has 4 keywords. In the following, we'll generate sentences with 4 keywords.
+If you want to generate sentences with other number of keywords, you should prepare keywords and put them in the "inputs/one-billion-words/{k}keywords.txt", where '{k}' denotes the number of keywords in each line. If so, you need to change the hyperparameter "keywords" (e.g., --keywords 1, if you want to generate sentence with one keyword). 
 
-    * <span id="L-MCMC"> Generete with LSTM-based MCMC model (L-MCMC) </span>
-    ```bash
-    cd generate  
-    python main.py --model_name LSTMLMGenerate --random 1 --gpu 1 --keywords 4 -sn 200
-    ```
+* <span id="L-MCMC"> Generete with LSTM-based MCMC model (L-MCMC) </span>
+```bash
+cd generate  
+python main.py --model_name LSTMLMGenerate --random 1 --gpu 1 --keywords 4 -sn 200
+```
 
-    * <span id="L-MCMC-C"> Generete with LSTM-based MCMC w/ classifier (L-MCMC-C) </span>
-    ```bash
-    cd generate  
-    python main.py --model_name LSTMLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
-    ```
+* <span id="L-MCMC-C"> Generete with LSTM-based MCMC w/ classifier (L-MCMC-C) </span>
+```bash
+cd generate  
+python main.py --model_name LSTMLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
+```
 
-    * <span id="X-MCMC"> Generete with XLNet-based MCMC model (X-MCMC) </span>
-    ```bash
-    cd generate  
-    python main.py --model_name XLNetLMGenerate --random 1 --gpu 1 --keywords 4 -sn 200
-    ```
-    * <span id="X-MCMC-C"> Generete with XLNet-based MCMC w/ classifier (X-MCMC-C) </span>
-    ```bash
-    cd generate  
-    python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
-    ```
+* <span id="X-MCMC"> Generete with XLNet-based MCMC model (X-MCMC) </span>
+```bash
+cd generate  
+python main.py --model_name XLNetLMGenerate --random 1 --gpu 1 --keywords 4 -sn 200
+```
+* <span id="X-MCMC-C"> Generete with XLNet-based MCMC w/ classifier (X-MCMC-C) </span>
+```bash
+cd generate  
+python main.py --model_name XLNetLMGenerate --random 0 --gpu 1 --keywords 4 -sn 200
+```
 ****
 ## Citation
 If you want to use this code in your research, you can cite our [paper](https://ojs.aaai.org/index.php/AAAI/article/view/17536):
